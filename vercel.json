@@ -1,20 +1,8 @@
 {
   "routes": [
-    {
-      "src": "/html",
-      "dest": "/task/html"
-    },
-    {
-      "src": "/json",
-      "dest": "/task/json"
-    },
-    {
-      "src": "/other",
-      "dest": "/task/other"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/"
-    }
+    { "src": "/", "dest": "app.js" },
+    { "src": "/html", "dest": "task/html.js" },
+    { "src": "/json", "dest": "task/json.js" },
+    { "src": "/(.*)", "dest": "app.js" }
   ]
 }
