@@ -4,13 +4,11 @@ const app = express();
 const indexRouter = require("./task/index");
 const htmlRouter = require("./task/html");
 const jsonRouter = require("./task/json");
-const otherRouter = require("./task/other.js");
 
 app.use(express.json());
 app.use("/", indexRouter);
 app.use("/html", htmlRouter);
 app.use("/json", jsonRouter);
-app.use("/other", otherRouter);
 
 app.use((req, res) => {
   res.status(404).send("404 Not Found");
