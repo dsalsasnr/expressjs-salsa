@@ -1,8 +1,7 @@
 {
-  "routes": [
-    { "src": "/", "dest": "app.js" },
-    { "src": "/html", "dest": "task/html.js" },
-    { "src": "/json", "dest": "task/json.js" },
-    { "src": "/(.*)", "dest": "app.js" }
+  "rewrites": [
+    { "source": "/", "destination": "/task/index" },
+    { "source": "/html", "destination": "/task/html" },
+    { "source": "/json", "destination": "/task/json" }
   ]
 }
