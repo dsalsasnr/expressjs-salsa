@@ -1,7 +1,14 @@
 {
-  "rewrites": [
-    { "source": "/", "destination": "/task/index" },
-    { "source": "/html", "destination": "/task/html" },
-    { "source": "/json", "destination": "/task/json" }
+  "version": 2,
+  "builds": [
+    {
+      "src": "./app.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    { "src": "/html", "dest": "/task/html.js" },
+    { "src": "/json", "dest": "/task/json.js" },
+    { "src": "/(.*)", "dest": "/task/index.js" }
   ]
 }
