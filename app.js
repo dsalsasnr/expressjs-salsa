@@ -14,10 +14,6 @@ app.use((req, res) => {
   res.status(404).send("404 Not Found");
 });
 
-app.listen(3000, () => {
-  console.log("Server : http://localhost:3000");
-});
-
 // const express = require("express");
 // const app = express();
 // const router = require("./routes");
