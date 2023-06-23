@@ -26,13 +26,6 @@ const view = (req, res) => {
     },
     _response(res)
   );
-
-  connection.query(
-    {
-      sql: "SELECT * FROM products",
-    },
-    _response(res)
-  );
 };
 
 const destroy = (req, res) => {
@@ -53,7 +46,7 @@ const store = (req, res) => {
     fs.renameSync(image.path, target);
     connection.query(
       {
-        sql: "INSERT INTO products ( users_id, name, price, stock, status, image_url ) VALUES ( ?, ?, ?, ?, ?, ?)",
+        sql: "INSERT INTO products (users_id, name, price, stock, status, image_url) VALUES (?, ?, ?, ?, ?, ?)",
         values: [parseInt(users_id), name, price, stock, status, `http://localhost:3000/public/${image.originalname}`],
       },
       _response(res)
@@ -69,9 +62,11 @@ const update = (req, res) => {
   if (image) {
     const target = path.join(__dirname, "../../uploads", image.originalname);
     fs.renameSync(image.path, target);
-    (sql = "UPDATE products SET users_id = ?, name = ?, price = ?, stock = ?, status = ?, image_url = ? WHERE id = ?"), (values = [parseInt(users_id), name, price, stock, status, `http://loaclhost:3000/public/${image.originalname}`, req.params.id]);
+    sql = "UPDATE products SET users_id = ?, name = ?, price = ?, stock = ?, status = ?, image_url = ? WHERE id = ?";
+    values = [parseInt(users_id), name, price, stock, status, `http://localhost:3000/public/${image.originalname}`, req.params.id];
   } else {
-    (sql = "UPDATE products SET users_id = ?, name = ?, price = ?, stock = ?, status = ? WHERE id = ?"), (values = [parseInt(users_id), name, price, stock, status, req.params.id]);
+    sql = "UPDATE products SET users_id = ?, name = ?, price = ?, stock = ?, status = ? WHERE id = ?";
+    values = [parseInt(users_id), name, price, stock, status, req.params.id];
   }
   connection.query({ sql, values }, _response(res));
 };
