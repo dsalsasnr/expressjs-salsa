@@ -1,27 +1,26 @@
 const mongoose = require("mongoose");
+const { model, Schema } = mongoose;
 
-const productSchema = mongoose.Schema({
-  name: {
-    type: String,
-    required: [true, "field nama harus ada"],
-    minlength: 3,
-    maxlength: 50,
+let productSchema = Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+    },
+    price: {
+      type: Number,
+      required: true,
+    },
+    stocks: {
+      type: Number,
+      required: true,
+    },
+    status: {
+      type: Boolean,
+      required: true,
+    },
   },
-  price: {
-    type: Number,
-    required: true,
-    min: 1000,
-    max: 100000000,
-  },
-  stock: Number,
-  status: {
-    type: Boolean,
-    default: true,
-  },
-  image_url: {
-    type: String,
-  },
-});
+  { timestamps: true }
+);
 
-const Product = mongoose.model("Product", productSchema);
-module.exports = Product;
+module.exports = model("Product", productSchema);
